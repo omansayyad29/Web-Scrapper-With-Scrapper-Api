@@ -1,0 +1,4 @@
+streamlit==1.22.0  # Specify the version you are using
+requests==2.31.0   # Specify the version you are using
+beautifulsoup4==4.12.2  # For HTML parsing
+python-docx==0.8.11  # For creating DOCX files
