@@ -42,10 +42,12 @@ def scrape_and_save_to_docx(url):
     doc.add_heading(f'Content from {domain}', level=1)
 
     # Handle tags efficiently
-    for tag in soup.find_all(['h1', 'h2', 'h3', 'h4', 'p', 'ul', 'ol', 'img', 'audio', 'video']):
+    for tag in soup.find_all(['h1', 'h2', 'h3', 'h4', 'p', 'ul', 'ol', 'img', 'audio', 'video','div']):
         if tag.name in ['h1', 'h2', 'h3', 'h4']:
             doc.add_heading(tag.get_text(strip=True), level=int(tag.name[1]))
         elif tag.name == 'p':
+            doc.add_paragraph(tag.get_text(strip=True))
+        elif tag.name == 'div':
             doc.add_paragraph(tag.get_text(strip=True))
         elif tag.name == 'ul':
             for li in tag.find_all('li'):
